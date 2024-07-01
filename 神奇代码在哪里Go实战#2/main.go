@@ -12,6 +12,10 @@ func modify2(slice []string) {
 	slice[3] = "衡"
 }
 
+func modify3(m map[string]int) {
+	m["chong"] = 100
+}
+
 func main() {
 
 	//数组
@@ -52,4 +56,35 @@ func main() {
 	subslice[0] = "天"
 	fmt.Println(subslice, slice)
 
+	multiSlice := make([][]int, 0)
+	multiSlice = append(multiSlice, []int{1, 2, 3})
+	multiSlice = append(multiSlice, []int{4, 5, 6})
+
+	fmt.Println(multiSlice)
+
+	multiSlice[0][1] = 100
+	fmt.Println(multiSlice)
+
+	//映射
+	scores := map[string]int{
+		"ming":     10,
+		"zhangsan": 13,
+	}
+	fmt.Println(scores, len(scores))
+	fmt.Println(scores["ming"])
+
+	score1, exist1 := scores["ming"]
+	fmt.Println(score1, exist1)
+	score2, exist2 := scores["chong"]
+	fmt.Println(score2, exist2)
+
+	modify3(scores)
+	fmt.Println(scores)
+
+	delete(scores, "ming")
+	fmt.Println(scores)
+
+	for key, value := range scores {
+		fmt.Printf("key: %s, value: %d\n", key, value)
+	}
 }
